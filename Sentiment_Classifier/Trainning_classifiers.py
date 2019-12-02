@@ -87,7 +87,7 @@ all_words = nltk.FreqDist(all_words)
 
 word_features = list(all_words.keys())[:5000]
 
-save_word_features = open("pickled_models/word_features5k.pickle","wb")
+save_word_features = open("pickled_models/word_features.pickle","wb")
 pickle.dump(word_features, save_word_features)
 save_word_features.close()
 
@@ -173,6 +173,6 @@ SGDC_classifier = SklearnClassifier(SGDClassifier())
 SGDC_classifier.train(training_set)
 print("SGDClassifier accuracy percent:",nltk.classify.accuracy(SGDC_classifier, testing_set)*100)
 
-save_classifier = open("pickled_models/SGDClassifier.pickle","wb")
+save_classifier = open("pickled_models/SGDC_classifier.pickle","wb")
 pickle.dump(SGDC_classifier, save_classifier)
 save_classifier.close()

@@ -42,9 +42,9 @@ documents_f = open("pickled_models/documents.pickle", "rb")
 documents = pickle.load(documents_f, encoding='iso-8859-1')
 documents_f.close()
 
-word_features5k_f = open("pickled_models/word_features.pickle", "rb")
-word_features = pickle.load(word_features5k_f, encoding='iso-8859-1')
-word_features5k_f.close()
+word_features_f = open("pickled_models/word_features.pickle", "rb")
+word_features = pickle.load(word_features_f, encoding='iso-8859-1')
+word_features_f.close()
 
 
 def find_features(document):
