@@ -9,9 +9,9 @@ import Sentiment_module as s
 import csv
 import os
 
-path = "testing_files/2017/12"
 year = 2017
 month = 12
+path = "testing_files/" + str(year) +"/" + str(month)
 
 #read all files under the folder	
 files= os.listdir(path)
@@ -20,11 +20,11 @@ for file in files:
     if not os.path.isdir(file):
         file1 = path + "/" + file
         outtemp = s.sentiment_file(file1)
-        outtemp.append(file)
+        outtemp.append(file)#.append(year).append(month)
         out.extend([outtemp])
 
 #write to the csv:	5 classifers resuts + final results + file name
-with open('%s_%s_sentiment_result.csv' % (year, month), 'w') as f:
+with open('result/%s_%s_sentiment_result.csv' % (year, month), 'w') as f:
 	writer = csv.writer(f)
 	#writer.writerows([[res, votes[0], votes[1], votes[2], votes[3], votes[4]]])
 	writer.writerows(out)
