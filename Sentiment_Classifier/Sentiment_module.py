@@ -26,14 +26,16 @@ class VoteClassifier(ClassifierI):
         for c in self._classifiers:
             v = c.classify(features)
             votes.append(v)
-        return mode(votes)
+        votes.append(mode(votes))
+        return votes
 
     def confidence(self, features):
         votes = []
+        votes_re = []
         for c in self._classifiers:
             v = c.classify(features)
             votes.append(v)
-        print(votes)
+        #print(votes)
         choice_votes = votes.count(mode(votes))
         conf = choice_votes / len(votes)
         return conf
@@ -120,5 +122,5 @@ def sentiment_file(file):
     feats = {}
     for w in word_features:
         feats[w] = (w in words)
-    return voted_classifier.classify(feats),voted_classifier.confidence(feats)
+    return voted_classifier.classify(feats)#,voted_classifier.confidence(feats)
 
