@@ -105,7 +105,7 @@ if __name__ == '__main__':
                         print('Encountered error while creating directory ',str(e))
 
 
-                    with Pool(100) as p:
+                    with Pool(50) as p:
                         data_ = p.map(generate_data,urls)
 
                     #Changing to orginal directory

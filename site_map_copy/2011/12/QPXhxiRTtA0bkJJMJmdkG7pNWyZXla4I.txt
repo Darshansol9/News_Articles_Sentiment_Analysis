@@ -1,0 +1,1 @@
+CNN looks at the holiday shopping deals and compares them to other times of the year.

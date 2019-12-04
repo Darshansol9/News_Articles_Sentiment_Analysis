@@ -2,13 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="16427fc5-5c5e-4067-a21c-2d726fab5b28" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/News_Articles_Sentiment_Analysis.iml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/modules.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/vcs.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/RZ/Proxy_Random.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/RZ/RZtest.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/python_code_files/Parallel_fetch_Articles.py" afterPath="$PROJECT_DIR$/python_code_files/Parallel_fetch_Articles.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/site_map_copy/Complete_Articles_Data.csv" afterPath="$PROJECT_DIR$/site_map_copy/Complete_Articles_Data.csv" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -18,9 +14,10 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="CoverageDataManager">
-    <SUITE FILE_PATH="coverage/News_Articles_Sentiment_Analysis$Parallel_fetch_Articles.coverage" NAME="Parallel_fetch_Articles Coverage Results" MODIFIED="1575440308167" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/python_code_files" />
+    <SUITE FILE_PATH="coverage/News_Articles_Sentiment_Analysis$Parallel_fetch_Articles.coverage" NAME="Parallel_fetch_Articles Coverage Results" MODIFIED="1575475769703" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/python_code_files" />
     <SUITE FILE_PATH="coverage/News_Articles_Sentiment_Analysis$RZtest.coverage" NAME="RZtest Coverage Results" MODIFIED="1575350081397" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/RZ" />
     <SUITE FILE_PATH="coverage/News_Articles_Sentiment_Analysis$network.coverage" NAME="network Coverage Results" MODIFIED="1575431263932" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$USER_HOME$/anaconda3/lib/python3.7/site-packages/newspaper" />
+    <SUITE FILE_PATH="coverage/News_Articles_Sentiment_Analysis$article.coverage" NAME="article Coverage Results" MODIFIED="1575465035826" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$USER_HOME$/anaconda3/lib/python3.7/site-packages/newspaper" />
     <SUITE FILE_PATH="coverage/News_Articles_Sentiment_Analysis$Proxy_Random.coverage" NAME="Proxy_Random Coverage Results" MODIFIED="1575394884022" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/RZ" />
   </component>
   <component name="FileEditorManager">
@@ -28,8 +25,8 @@
       <file leaf-file-name="Parallel_fetch_Articles.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/python_code_files/Parallel_fetch_Articles.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="317">
-              <caret line="111" column="34" lean-forward="false" selection-start-line="111" selection-start-column="34" selection-end-line="111" selection-end-column="34" />
+            <state relative-caret-position="417">
+              <caret line="64" column="32" lean-forward="true" selection-start-line="64" selection-start-column="32" selection-end-line="64" selection-end-column="32" />
               <folding>
                 <element signature="e#0#29#0" expanded="true" />
               </folding>
@@ -40,8 +37,8 @@
       <file leaf-file-name="network.py" pinned="false" current-in-tab="false">
         <entry file="file://$USER_HOME$/anaconda3/lib/python3.7/site-packages/newspaper/network.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="226">
-              <caret line="58" column="26" lean-forward="false" selection-start-line="58" selection-start-column="26" selection-end-line="58" selection-end-column="26" />
+            <state relative-caret-position="212">
+              <caret line="83" column="4" lean-forward="false" selection-start-line="83" selection-start-column="4" selection-end-line="83" selection-end-column="4" />
               <folding />
             </state>
           </provider>
@@ -50,8 +47,8 @@
       <file leaf-file-name="configuration.py" pinned="false" current-in-tab="false">
         <entry file="file://$USER_HOME$/anaconda3/lib/python3.7/site-packages/newspaper/configuration.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="359">
-              <caret line="75" column="23" lean-forward="false" selection-start-line="75" selection-start-column="23" selection-end-line="75" selection-end-column="23" />
+            <state relative-caret-position="398">
+              <caret line="58" column="30" lean-forward="false" selection-start-line="58" selection-start-column="13" selection-end-line="58" selection-end-column="30" />
               <folding>
                 <element signature="e#415#429#0" expanded="true" />
               </folding>
@@ -62,8 +59,8 @@
       <file leaf-file-name="article.py" pinned="false" current-in-tab="false">
         <entry file="file://$USER_HOME$/anaconda3/lib/python3.7/site-packages/newspaper/article.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-3590">
-              <caret line="40" column="6" lean-forward="false" selection-start-line="40" selection-start-column="6" selection-end-line="40" selection-end-column="6" />
+            <state relative-caret-position="398">
+              <caret line="181" column="22" lean-forward="false" selection-start-line="181" selection-start-column="22" selection-end-line="181" selection-end-column="22" />
               <folding />
             </state>
           </provider>
@@ -89,6 +86,7 @@
       <find>multithread_request</find>
       <find>time</find>
       <find>comple</find>
+      <find>status</find>
     </findStrings>
     <replaceStrings>
       <replace />
@@ -108,6 +106,7 @@
         <option value="$USER_HOME$/anaconda3/lib/python3.7/site-packages/newspaper/network.py" />
         <option value="$USER_HOME$/anaconda3/lib/python3.7/site-packages/newspaper/configuration.py" />
         <option value="$PROJECT_DIR$/python_code_files/Parallel_fetch_Articles.py" />
+        <option value="$USER_HOME$/anaconda3/lib/python3.7/site-packages/newspaper/article.py" />
       </list>
     </option>
   </component>
@@ -137,7 +136,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
+      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -173,19 +172,13 @@
             <path>
               <item name="News_Articles_Sentiment_Analysis" type="b2602c69:ProjectViewProjectNode" />
               <item name="News_Articles_Sentiment_Analysis" type="462c0819:PsiDirectoryNode" />
-              <item name="site_map_copy" type="462c0819:PsiDirectoryNode" />
-              <item name="2015" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="News_Articles_Sentiment_Analysis" type="b2602c69:ProjectViewProjectNode" />
-              <item name="News_Articles_Sentiment_Analysis" type="462c0819:PsiDirectoryNode" />
               <item name="site_maps" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="Scratches" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -193,10 +186,11 @@
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/site_map_copy" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/site_map_copy" />
+      <recent name="$PROJECT_DIR$/site_map_copy/2014" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/site_map_copy" />
     </key>
   </component>
@@ -267,6 +261,24 @@
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
     </configuration>
+    <configuration name="article" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$USER_HOME$/anaconda3/lib/python3.7/site-packages/newspaper" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="News_Articles_Sentiment_Analysis" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$USER_HOME$/anaconda3/lib/python3.7/site-packages/newspaper/article.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+    </configuration>
     <configuration name="network" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -285,18 +297,20 @@
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
     </configuration>
-    <list size="4">
+    <list size="5">
       <item index="0" class="java.lang.String" itemvalue="Python.RZtest" />
       <item index="1" class="java.lang.String" itemvalue="Python.Proxy_Random" />
       <item index="2" class="java.lang.String" itemvalue="Python.Parallel_fetch_Articles" />
       <item index="3" class="java.lang.String" itemvalue="Python.network" />
+      <item index="4" class="java.lang.String" itemvalue="Python.article" />
     </list>
     <recent_temporary>
-      <list size="4">
+      <list size="5">
         <item index="0" class="java.lang.String" itemvalue="Python.Parallel_fetch_Articles" />
-        <item index="1" class="java.lang.String" itemvalue="Python.network" />
-        <item index="2" class="java.lang.String" itemvalue="Python.Proxy_Random" />
-        <item index="3" class="java.lang.String" itemvalue="Python.RZtest" />
+        <item index="1" class="java.lang.String" itemvalue="Python.article" />
+        <item index="2" class="java.lang.String" itemvalue="Python.network" />
+        <item index="3" class="java.lang.String" itemvalue="Python.Proxy_Random" />
+        <item index="4" class="java.lang.String" itemvalue="Python.RZtest" />
       </list>
     </recent_temporary>
   </component>
@@ -315,15 +329,14 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="1440" y="0" width="1920" height="1080" extended-state="0" />
-    <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3109691" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.314164" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.31976166" sideWeight="0.09691161" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.31976166" sideWeight="0.10063898" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32958034" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.31976166" sideWeight="0.9030884" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.31976166" sideWeight="0.899361" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32958034" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
@@ -351,33 +364,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/2017/Text_File_750.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/python_code_files/googlesearch.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/README.md">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/RZ/Sitemap-2019-01" />
-    <entry file="file://$PROJECT_DIR$/RZ/Sitemap-2018-09" />
-    <entry file="file://$PROJECT_DIR$/RZ/Sitemap-2018-04" />
-    <entry file="file://$PROJECT_DIR$/RZ/Sitemap-2017-02" />
-    <entry file="file://$PROJECT_DIR$/RZ/Sitemap-2017-01" />
-    <entry file="file://$PROJECT_DIR$/RZ/Sitemap-2017-04" />
     <entry file="file://$PROJECT_DIR$/RZ/Sitemap-2017-03" />
     <entry file="file://$PROJECT_DIR$/RZ/Sitemap-2017-06" />
     <entry file="file://$PROJECT_DIR$/RZ/Sitemap-2017-05" />
@@ -452,7 +438,6 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/site_map_copy/Sitemap-2011-08-pp.json" />
-    <entry file="file://$PROJECT_DIR$/site_map_copy/Sitemap-2011-07-pp.json" />
     <entry file="file://$PROJECT_DIR$/site_map_copy/Sitemap-2012-12-pp.json" />
     <entry file="file://$PROJECT_DIR$/site_map_copy/Sitemap-2018-07-pp.json" />
     <entry file="file://$PROJECT_DIR$/site_map_copy/Sitemap-2018-01-pp.json" />
@@ -470,101 +455,100 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="315">
           <caret line="1112" column="29" lean-forward="false" selection-start-line="1112" selection-start-column="29" selection-end-line="1112" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/site_map_copy/Sitemap-2016-08-pp.json" />
+    <entry file="file://$PROJECT_DIR$/site_map_copy/Sitemap-2016-06-pp.json" />
+    <entry file="file://$PROJECT_DIR$/site_map_copy/Sitemap-2016-10-pp.json" />
+    <entry file="file://$PROJECT_DIR$/site_map_copy/Sitemap-2016-11-pp.json" />
+    <entry file="file://$PROJECT_DIR$/site_map_copy/Sitemap-2016-12-pp.json" />
+    <entry file="file://$PROJECT_DIR$/site_map_copy/Sitemap-2018-02-pp.json" />
+    <entry file="file://$PROJECT_DIR$/site_map_copy/Sitemap-2018-08-pp.json" />
+    <entry file="file://$PROJECT_DIR$/site_map_copy/Sitemap-2018-11-pp.json" />
+    <entry file="file://$PROJECT_DIR$/site_map_copy/Sitemap-2019-01-pp.json" />
+    <entry file="file://$PROJECT_DIR$/site_map_copy/Sitemap-2017-01-pp.json" />
+    <entry file="file://$PROJECT_DIR$/site_map_copy/Sitemap-2017-03-pp.json" />
+    <entry file="file://$PROJECT_DIR$/site_map_copy/Sitemap-2017-06-pp.json" />
+    <entry file="file://$PROJECT_DIR$/site_map_copy/Sitemap-2017-09-pp.json" />
+    <entry file="file://$PROJECT_DIR$/site_map_copy/Sitemap-2015-09-pp.json" />
+    <entry file="file://$PROJECT_DIR$/site_map_copy/Sitemap-2015-01-pp.json" />
+    <entry file="file://$PROJECT_DIR$/site_map_copy/Sitemap-2013-01-pp.json" />
+    <entry file="file://$PROJECT_DIR$/site_map_copy/Sitemap-2014-12-pp.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="0" column="2128" lean-forward="false" selection-start-line="0" selection-start-column="2128" selection-end-line="0" selection-end-column="2128" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/site_map_copy/Sitemap-2016-08-pp.json">
+    <entry file="file://$USER_HOME$/anaconda3/lib/python3.7/site-packages/requests/exceptions.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="0" column="2725" lean-forward="false" selection-start-line="0" selection-start-column="2725" selection-end-line="0" selection-end-column="2725" />
+        <state relative-caret-position="425">
+          <caret line="25" column="0" lean-forward="true" selection-start-line="25" selection-start-column="0" selection-end-line="25" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/site_map_copy/Sitemap-2016-06-pp.json">
+    <entry file="file://$USER_HOME$/anaconda3/lib/python3.7/site-packages/requests/models.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="0" column="2754" lean-forward="false" selection-start-line="0" selection-start-column="2754" selection-end-line="0" selection-end-column="2754" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/anaconda3/lib/python3.7/site-packages/newspaper/article.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-3590">
-          <caret line="40" column="6" lean-forward="false" selection-start-line="40" selection-start-column="6" selection-end-line="40" selection-end-column="6" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/site_map_copy/Sitemap-2016-10-pp.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="0" column="2447" lean-forward="false" selection-start-line="0" selection-start-column="2447" selection-end-line="0" selection-end-column="2447" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/site_map_copy/Sitemap-2016-11-pp.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="0" column="1967" lean-forward="true" selection-start-line="0" selection-start-column="1967" selection-end-line="0" selection-end-column="1967" />
+        <state relative-caret-position="220">
+          <caret line="916" column="8" lean-forward="false" selection-start-line="916" selection-start-column="8" selection-end-line="916" selection-end-column="8" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$USER_HOME$/anaconda3/lib/python3.7/site-packages/newspaper/configuration.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="359">
-          <caret line="75" column="23" lean-forward="false" selection-start-line="75" selection-start-column="23" selection-end-line="75" selection-end-column="23" />
+        <state relative-caret-position="398">
+          <caret line="58" column="30" lean-forward="false" selection-start-line="58" selection-start-column="13" selection-end-line="58" selection-end-column="30" />
           <folding>
             <element signature="e#415#429#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/site_map_copy/Sitemap-2016-12-pp.json">
+    <entry file="file://$PROJECT_DIR$/site_map_copy/Sitemap-2014-11-pp.json">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        <state relative-caret-position="170">
+          <caret line="0" column="1526" lean-forward="false" selection-start-line="0" selection-start-column="1526" selection-end-line="0" selection-end-column="1526" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/site_map_copy/Sitemap-2014-01-pp.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="0" column="1537" lean-forward="false" selection-start-line="0" selection-start-column="1537" selection-end-line="0" selection-end-column="1537" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$USER_HOME$/anaconda3/lib/python3.7/site-packages/newspaper/network.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="226">
-          <caret line="58" column="26" lean-forward="false" selection-start-line="58" selection-start-column="26" selection-end-line="58" selection-end-column="26" />
+        <state relative-caret-position="212">
+          <caret line="83" column="4" lean-forward="false" selection-start-line="83" selection-start-column="4" selection-end-line="83" selection-end-column="4" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/site_map_copy/Sitemap-2018-02-pp.json">
+    <entry file="file://$PROJECT_DIR$/site_map_copy/Sitemap-2012-01-pp.json">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="0" column="2146" lean-forward="false" selection-start-line="0" selection-start-column="2146" selection-end-line="0" selection-end-column="2146" />
+        <state relative-caret-position="408">
+          <caret line="0" column="3563" lean-forward="false" selection-start-line="0" selection-start-column="3563" selection-end-line="0" selection-end-column="3563" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/site_map_copy/Sitemap-2018-08-pp.json">
+    <entry file="file://$USER_HOME$/anaconda3/lib/python3.7/site-packages/newspaper/article.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="0" column="1107" lean-forward="false" selection-start-line="0" selection-start-column="1107" selection-end-line="0" selection-end-column="1107" />
+        <state relative-caret-position="398">
+          <caret line="181" column="22" lean-forward="false" selection-start-line="181" selection-start-column="22" selection-end-line="181" selection-end-column="22" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/site_map_copy/Sitemap-2018-11-pp.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/site_map_copy/Sitemap-2019-01-pp.json">
+    <entry file="file://$PROJECT_DIR$/site_map_copy/Sitemap-2011-07-pp.json">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
@@ -572,7 +556,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/site_map_copy/Sitemap-2017-01-pp.json">
+    <entry file="file://$PROJECT_DIR$/site_map_copy/Sitemap-2019-06-pp.json">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
@@ -580,50 +564,18 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/site_map_copy/Sitemap-2017-03-pp.json">
+    <entry file="file://$PROJECT_DIR$/site_map_copy/Sitemap-2019-04-pp.json">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/site_map_copy/Sitemap-2017-06-pp.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/site_map_copy/Sitemap-2017-09-pp.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/site_map_copy/Sitemap-2015-09-pp.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/site_map_copy/Sitemap-2015-01-pp.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="0" column="2285" lean-forward="false" selection-start-line="0" selection-start-column="2285" selection-end-line="0" selection-end-column="2285" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/python_code_files/Parallel_fetch_Articles.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="317">
-          <caret line="111" column="34" lean-forward="false" selection-start-line="111" selection-start-column="34" selection-end-line="111" selection-end-column="34" />
+        <state relative-caret-position="417">
+          <caret line="64" column="32" lean-forward="true" selection-start-line="64" selection-start-column="32" selection-end-line="64" selection-end-column="32" />
           <folding>
             <element signature="e#0#29#0" expanded="true" />
           </folding>
