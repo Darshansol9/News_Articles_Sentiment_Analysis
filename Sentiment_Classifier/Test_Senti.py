@@ -8,37 +8,51 @@ Created on Thu Nov 21 13:42:25 2019
 import Sentiment_module as s
 import csv
 import os
+import json
 
-year = 2017
-month = 12
-path = "testing_files/" + str(year) +"/" + str(month)
+years = [2017]
+months = [11, 12]
+test_folder = "testing_files/"
 
-#read all files under the folder	
-files= os.listdir(path)
-out = [[]]
-for file in files:
-    if not os.path.isdir(file):
-        file1 = path + "/" + file
-        outtemp = s.sentiment_file(file1)
-        outtemp.append(file)#.append(year).append(month)
-        out.extend([outtemp])
-
-#write to the csv:	5 classifers resuts + final results + file name
-with open('result/%s_%s_sentiment_result.csv' % (year, month), 'w') as f:
-	writer = csv.writer(f)
-	#writer.writerows([[res, votes[0], votes[1], votes[2], votes[3], votes[4]]])
-	writer.writerows(out)
-
-# for file test:
-#file1 = "testing_files/test1.txt" # put under the same folder
-#file2 = "testing_files/test2.txt"
-#file3 = "testing_files/test3.txt"
-#print(s.sentiment_file(file1)) # (result, confidency rate)
-#print(s.sentiment_file(file2))
-#print(s.sentiment_file(file3))
+#write to the csv:	5 classifers resuts + final results + file name + year + month
+def write_csv_row(data):
+    with open('NLP_sentiment_result.csv', 'a') as outfile:
+        writer = csv.writer(outfile)
+        writer.writerow(data)
         
-# for text test:
-#print(s.sentiment("This article was rich, clear, willing, ingenuous, attractive, sensational, and hot"))
-#print(s.sentiment("This is the best marvellous, imaginative, and realistic one I have seen"))
-#print(s.sentiment("This article was utter junk. There were absolutely 0 points. I don't see what the point was at all. Horrible essay, suck"))
+#write to the csv:	5 classifers static resuts + final static results + year + month + label
+def write_csv2_row(data):
+    with open('NLP_sentiment_static_result.csv', 'a') as outfile:
+        writer = csv.writer(outfile)
+        writer.writerow(data)
 
+save = []
+for year in years:
+    for month in months:
+        
+        path = str(test_folder) + str(year) +"/" + str(month)
+        out = [[]]
+        #read all files under the folder	
+        files= os.listdir(path)        
+        pos = [0] * 6 
+        neg = [0] * 6
+        for file in files:
+            if not os.path.isdir(file):
+                file1 = path + "/" + file
+                outtemp = s.sentiment_file(file1)
+                for i in range(6): 
+                    if outtemp[i] == 'pos': pos[i] += 1
+                    if outtemp[i] == 'neg': neg[i] += 1
+                outtemp.extend([file, year, month])
+                write_csv_row(outtemp)
+                
+        pos.extend([year, month, "pos"])
+        neg.extend([year, month, "neg"])
+        write_csv2_row(pos)
+        write_csv2_row(neg)
+        save.extend([pos, neg])
+        
+def to_json():
+    save_json = json.dumps(save)
+    return save_json
+    
