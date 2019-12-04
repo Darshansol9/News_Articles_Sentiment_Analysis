@@ -1,4 +1,6 @@
 from newspaper import Article
+from newspaper import configuration
+from newspaper import network
 import pandas as pd
 from newspaper import fulltext
 import requests
@@ -56,7 +58,13 @@ def generate_data(url):
         
                     
     except Exception as e:
-                    
+
+        # # Renyue modify code here
+        # if e.response.status_code in [403]:
+        #     print('Error 403 happens, change IP')
+        #     generate_data(url)
+        # else:
+
         print(str(e))
         print('Problem occured in file {random_fie} closing it')
    
@@ -65,7 +73,7 @@ def generate_data(url):
 
 
 if __name__ == '__main__':
-    path = r'C:\Users\Darshan\Music\raman_kannan\NLP\processed'
+    path = r'/Users/Jason/Documents/GitHub/News_Articles_Sentiment_Analysis/site_map_copy/'
     os.chdir(path)
     try:
         for site_maps in os.listdir('.'):
@@ -78,24 +86,26 @@ if __name__ == '__main__':
                     print(f'Reading from the sitemaps {site_maps}')
                     
                     file_name,file_ext = os.path.splitext(site_maps)
-                    site_year,site_month = file_name.split('_')[1],file_name.split('_')[2]
+                    site_year,site_month = file_name.split('-')[1],file_name.split('-')[2]
                         
                     df = pd.read_json(site_maps)
                     urls = df['url'].tolist()
 
                     try:
-                        parent_folder = path+f'\\{site_year}'
-                        sub_folder = parent_folder + f'\\{site_month}'
+                        parent_folder = path+f'{site_year}'
+                        print(parent_folder)
+                        sub_folder = parent_folder + f'/{site_month}'
+                        print(sub_folder)
                         os.makedirs(parent_folder,exist_ok = True)
                         os.chdir(parent_folder)
                         os.makedirs(sub_folder,exist_ok = True)
                         os.chdir(sub_folder)
                         
-                    except Exceptions as e:
+                    except Exception as e:
                         print('Encountered error while creating directory ',str(e))
 
 
-                    with Pool(10) as p:
+                    with Pool(100) as p:
                         data_ = p.map(generate_data,urls)
 
                     #Changing to orginal directory
@@ -112,8 +122,8 @@ if __name__ == '__main__':
 
                     #Once sitemap json processed move from the directory                    
                     print(f'Moved {site_maps}' )
-                    source = f'C:\\Users\\Darshan\\Music\\raman_kannan\\NLP\\processed\\{site_maps}'
-                    dest = f'C:\\Users\\Darshan\\Music\\raman_kannan\\NLP\\processed_\\{site_maps}'    
+                    source = f'/Users/Jason/Documents/GitHub/News_Articles_Sentiment_Analysis/site_map_copy/{site_maps}'
+                    dest = f'/Users/Jason/Documents/GitHub/News_Articles_Sentiment_Analysis/site_map_copy/processed/{site_maps}'
                     shutil.move(source,dest)
                 
     except Exception as e:
