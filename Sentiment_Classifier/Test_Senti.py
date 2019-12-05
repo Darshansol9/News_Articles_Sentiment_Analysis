@@ -10,8 +10,10 @@ import csv
 import os
 import json
 
-years = [2017]
-months = [11, 12]
+years = ["2017"]
+months = ["01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12"]
+#years = ["2017"]
+#months = ["05"]
 test_folder = "testing_files/"
 
 #write to the csv:	5 classifers resuts + final results + file name + year + month
@@ -30,7 +32,7 @@ save = []
 for year in years:
     for month in months:
         
-        path = str(test_folder) + str(year) +"/" + str(month)
+        path = str(test_folder) + year +"/" + month
         out = [[]]
         #read all files under the folder	
         files= os.listdir(path)        
@@ -39,6 +41,8 @@ for year in years:
         for file in files:
             if not os.path.isdir(file):
                 file1 = path + "/" + file
+                if os.stat(file1).st_size == 0: 
+                    continue
                 outtemp = s.sentiment_file(file1)
                 for i in range(6): 
                     if outtemp[i] == 'pos': pos[i] += 1
