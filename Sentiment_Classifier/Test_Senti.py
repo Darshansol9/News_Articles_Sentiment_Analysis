@@ -10,10 +10,12 @@ import csv
 import os
 import json
 
-#years = ["2017"]
+years = ["2015"]
 #months = ["01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12"]
-years = ["2017"]
-months = ["12"]
+months = ["01", "02", "03"]
+time_analysis = False
+#years = ["2017"]
+#months = ["12"]
 test_folder = "testing_files/"
 
 #write to the csv:	5 classifers resuts + final results + file name + year + month
@@ -29,13 +31,13 @@ def write_csv2_row(data):
         writer.writerow(data)
 
 save = []
-cnt = 0;
+if time_analysis: cnt = 0;
 for year in years:
     for month in months:
         
         path = str(test_folder) + year +"/" + month
         out = [[]]
-        timeacc = [0] * 5
+        if time_analysis: timeacc = [0] * 5
         #read all files under the folder	
         files= os.listdir(path)        
         pos = [0] * 6 
@@ -45,22 +47,24 @@ for year in years:
                 file1 = path + "/" + file
                 if os.stat(file1).st_size == 0: 
                     continue
-                outtemp, timetemp = s.sentiment_file(file1)
+                outtemp, timetemp = s.sentiment_file(file1, time_analysis)
                 for i in range(6): 
                     if outtemp[i] == 'pos': pos[i] += 1
                     if outtemp[i] == 'neg': neg[i] += 1
                 outtemp.extend([file, year, month])
                 write_csv_row(outtemp)
-                timeacc = [timeacc[i] + timetemp[i] for i in range(len(timetemp))] 
-                cnt += 1
+                if time_analysis:
+                    timeacc = [timeacc[i] + timetemp[i] for i in range(len(timetemp))]
+                    cnt += 1
         pos.extend([year, month, "pos"])
         neg.extend([year, month, "neg"])
         write_csv2_row(pos)
         write_csv2_row(neg)
         save.extend([pos, neg])
 
-timeacc[:] = [x / cnt for x in timeacc]
-#print("each classofoers average calculating time in sec: ", timeacc)
+if time_analysis:
+    timeacc[:] = [x / cnt for x in timeacc]
+    print("each classofoers average calculating time in sec: ", timeacc)
   
 def to_json():
     save_json = json.dumps(save)

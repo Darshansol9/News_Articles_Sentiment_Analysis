@@ -16,18 +16,24 @@ from sklearn.svm import SVC, LinearSVC, NuSVC
 from nltk.classify import ClassifierI
 from statistics import mode
 from nltk.tokenize import word_tokenize
+import time
 
 class VoteClassifier(ClassifierI):
     def __init__(self, *classifiers):
         self._classifiers = classifiers
 
-    def classify(self, features):
+    def classify(self, features, time_analysis):
         votes = []
+        times = []
         for c in self._classifiers:
+            if time_analysis: start_t = time.clock()
             v = c.classify(features)
+            if time_analysis: 
+                end_t = time.clock()
+                times.append(end_t - start_t)
             votes.append(v)
         votes.append(mode(votes))
-        return votes
+        return votes, times
 
     def confidence(self, features):
         votes = []
@@ -35,7 +41,6 @@ class VoteClassifier(ClassifierI):
         for c in self._classifiers:
             v = c.classify(features)
             votes.append(v)
-        #print(votes)
         choice_votes = votes.count(mode(votes))
         conf = choice_votes / len(votes)
         return conf
@@ -78,8 +83,11 @@ open_file.close()
 open_file = open("pickled_models/MNB_classifier.pickle", "rb")
 MNB_classifier = pickle.load(open_file, encoding='iso-8859-1')
 open_file.close()
-
-
+"""
+open_file = open("pickled_models/randomForest_classifier.pickle", "rb")
+randomForest_classifier = pickle.load(open_file, encoding='iso-8859-1')
+open_file.close()
+"""
 open_file = open("pickled_models/BernoulliNB_classifier.pickle", "rb")
 BernoulliNB_classifier = pickle.load(open_file, encoding='iso-8859-1')
 open_file.close()
@@ -107,6 +115,7 @@ voted_classifier = VoteClassifier(
                                   LinearSVC_classifier,
                                   MNB_classifier,
                                   BernoulliNB_classifier,
+                                  #randomForest_classifier,
                                   LogisticRegression_classifier)
 
 
@@ -116,11 +125,11 @@ def sentiment(text):
     feats = find_features(text)
     return voted_classifier.classify(feats),voted_classifier.confidence(feats)
 
-def sentiment_file(file):
+def sentiment_file(file, time_analysis):
     text = open(file,"r", encoding='iso-8859-1').read()
     words = word_tokenize(text)
     feats = {}
     for w in word_features:
         feats[w] = (w in words)
-    return voted_classifier.classify(feats)#,voted_classifier.confidence(feats)
+    return voted_classifier.classify(feats, time_analysis)#,voted_classifier.confidence(feats)
 
