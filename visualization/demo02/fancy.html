@@ -19,7 +19,7 @@
         var pList = ['JAN','FEB','MAR','APR','MAY','JUN','JUL','AUG','SEP','OCT','NOV','DEC'];
 
         var temp;
-        for (var year = 2011; year <= 2019; year++) {
+        for (var year = 2008; year <= 2019; year++) {
             var max = 0;
             var sum = 0;
             temp = obj[year];
@@ -46,7 +46,14 @@
         2014:[159,142,106,140,129,130,104,120,135,119,110,97],
         2013:[149,186,192,196,237,188,157,195,169,131,139,136],
         2012:[226,182,170,186,228,189,195,194,157,168,190,193],
-        2011:[1,2,3,4,5,6,16,0,42,134,202,190]
+        2011:[0,0,0,0,0,0,16,0,42,134,202,190],
+        2010:[0,0,0,0,0,0,0,0,0,0,0,0],
+        2009:[249,194,139,103,97,90,87,102,102,74,98,51],
+        2008:[118,160,178,174,142,175,147,217,251,300,282,105]
+
+
+
+
     });
 
     dataMap.dataNEG = dataFormatter({
@@ -58,9 +65,13 @@
         2014:[623,484,392,534,486,650,514,541,568,692,529,622],
         2013:[501,523,642,695,728,689,583,614,561,548,540,584],
         2012:[200,554,591,577,703,655,715,582,525,383,373,504],
-        2011:[1,2,3,4,5,6,9,11,578,559,592,612]
-    });
+        2011:[0,0,0,0,0,0,9,11,578,559,592,612],
+        2010:[0,0,0,0,0,0,0,0,0,0,0,0],
+        2009:[179,121,102,78,71,62,67,77,78,54,78,43],
+        2008:[114,125,104,99,92,144,91,169,239,266,156,72]
 
+
+    });
 
 
     option = {
@@ -77,9 +88,9 @@
                 //     position: 'left'
                 // },
                 data: [
-                    // '2011-01-01',
-                    '2012-01-01',
-                    '2013-01-01', '2014-01-01','2015-01-01','2016-01-01','2017-01-01','2018-01-01','2019-01-01','2020-01-01'
+                    // '2008-01-01',
+                    '2009-01-01','2010-01-01','2011-01-01',
+                    '2012-01-01', '2013-01-01', '2014-01-01','2015-01-01','2016-01-01','2017-01-01','2018-01-01','2019-01-01','2020-01-01'
                 ],
                 label: {
                     formatter : function(s) {
@@ -96,7 +107,7 @@
             legend: {
                 x: 'right',
                 data: ['positive', 'negative'],
-                padding: [20, 20]
+                padding: [10, 20]
             },
             calculable : true,
             grid: { //add space between title and graph
@@ -119,11 +130,8 @@
                 {
                     'type':'category',
                     'axisLabel':{'interval':0},
-                    //        var pList = ['JAN','FEB','MAR','APR','MAY','JUN','JUL','AUG','SEP','OCT','NOV','DEC'];
-
                     'data':[
-                        'JAN','FEB','MAR','APR','MAY','JUN','JUL','AUG',
-                        'SEP','OCT','NOV','DEC'
+                        'JAN','FEB','MAR','APR','MAY','JUN','JUL','AUG', 'SEP','OCT','NOV','DEC'
                     ],
                     splitLine: {show: false}
                 }
@@ -148,6 +156,39 @@
             ]
         },
         options: [
+            {
+                title: {text: '2008 CNN articles analysis'},
+                series: [
+                    {data: dataMap.dataPOS["2008"]},
+                    {data: dataMap.dataNEG["2008"]},
+                    {data: [
+                            {name: 'positive', value: dataMap.dataPOS['2011sum']},
+                            {name: 'negative', value: dataMap.dataNEG['2011sum']}
+                        ]}
+                ]
+            },
+            {
+                title: {text: '2009 CNN articles analysis'},
+                series: [
+                    {data: dataMap.dataPOS["2009"]},
+                    {data: dataMap.dataNEG["2009"]},
+                    {data: [
+                            {name: 'positive', value: dataMap.dataPOS['2011sum']},
+                            {name: 'negative', value: dataMap.dataNEG['2011sum']}
+                        ]}
+                ]
+            },
+            {
+                title: {text: '2010 CNN articles analysis'},
+                series: [
+                    {data: dataMap.dataPOS["2010"]},
+                    {data: dataMap.dataNEG["2010"]},
+                    {data: [
+                            {name: 'positive', value: dataMap.dataPOS['2010sum']},
+                            {name: 'negative', value: dataMap.dataNEG['2010sum']}
+                        ]}
+                ]
+            },
             {
                 title: {text: '2011 CNN articles analysis'},
                 series: [

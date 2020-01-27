@@ -14,8 +14,17 @@
 </body>
 
 <script type="text/javascript">
-    // 2011:[1,2,3,4,5,6,16,0,42,134,202,190]
-    // 2011:[1,2,3,4,5,6,9,11,578,559,592,612]
+    // 2008:[118,160,178,174,142,175,147,217,251,300,282,105]
+    // 2008:[114,125,104,99,92,144,91,169,239,266,156,72]
+    //
+    // 2009:[249,194,139,103,97,90,87,102,102,74,98,51]
+    // 2009:[179,121,102,78,71,62,67,77,78,54,78,43]
+    //
+    // 2010:[0,0,0,0,0,0,0,0,0,0,0,0]
+    // 2010:[0,0,0,0,0,0,0,0,0,0,0,0]
+    //
+    // 2011:[0,0,0,0,0,0,16,0,42,134,202,190]
+    // 2011:[0,0,0,0,0,0,9,11,578,559,592,612]
     // 2012:[226,182,170,186,228,189,195,194,157,168,190,193]
     // 2012:[200,554,591,577,703,655,715,582,525,383,373,504]
     // 2013:[149,186,192,196,237,188,157,195,169,131,139,136]
@@ -39,7 +48,7 @@
         var pList = ['JAN','FEB','MAR','APR','MAY','JUN','JUL','AUG','SEP','OCT','NOV','DEC'];
 
         var temp;
-        for (var year = 2011; year <= 2019; year++) {
+        for (var year = 2008; year <= 2019; year++) {
             var max = 0;
             var sum = 0;
             temp = obj[year];
@@ -66,7 +75,14 @@
         2014:[159,142,106,140,129,130,104,120,135,119,110,97],
         2013:[149,186,192,196,237,188,157,195,169,131,139,136],
         2012:[226,182,170,186,228,189,195,194,157,168,190,193],
-        2011:[1,2,3,4,5,6,16,0,42,134,202,190]
+        2011:[0,0,0,0,0,0,16,0,42,134,202,190],
+        2010:[0,0,0,0,0,0,0,0,0,0,0,0],
+        2009:[249,194,139,103,97,90,87,102,102,74,98,51],
+        2008:[118,160,178,174,142,175,147,217,251,300,282,105]
+
+
+
+
     });
 
     dataMap.dataNEG = dataFormatter({
@@ -78,7 +94,12 @@
         2014:[623,484,392,534,486,650,514,541,568,692,529,622],
         2013:[501,523,642,695,728,689,583,614,561,548,540,584],
         2012:[200,554,591,577,703,655,715,582,525,383,373,504],
-        2011:[1,2,3,4,5,6,9,11,578,559,592,612]
+        2011:[0,0,0,0,0,0,9,11,578,559,592,612],
+        2010:[0,0,0,0,0,0,0,0,0,0,0,0],
+        2009:[179,121,102,78,71,62,67,77,78,54,78,43],
+        2008:[114,125,104,99,92,144,91,169,239,266,156,72]
+
+
     });
 
 
@@ -97,9 +118,9 @@
                 //     position: 'left'
                 // },
                 data: [
-                    // '2011-01-01',
-                    '2012-01-01',
-                    '2013-01-01', '2014-01-01','2015-01-01','2016-01-01','2017-01-01','2018-01-01','2019-01-01','2020-01-01'
+                    // '2008-01-01',
+                    '2009-01-01','2010-01-01','2011-01-01',
+                    '2012-01-01', '2013-01-01', '2014-01-01','2015-01-01','2016-01-01','2017-01-01','2018-01-01','2019-01-01','2020-01-01'
                 ],
                 label: {
                     formatter : function(s) {
@@ -165,7 +186,39 @@
             ]
         },
         options: [
-
+            {
+                title: {text: '2008 CNN articles analysis'},
+                series: [
+                    {data: dataMap.dataPOS["2008"]},
+                    {data: dataMap.dataNEG["2008"]},
+                    {data: [
+                            {name: 'positive', value: dataMap.dataPOS['2011sum']},
+                            {name: 'negative', value: dataMap.dataNEG['2011sum']}
+                        ]}
+                ]
+            },
+            {
+                title: {text: '2009 CNN articles analysis'},
+                series: [
+                    {data: dataMap.dataPOS["2009"]},
+                    {data: dataMap.dataNEG["2009"]},
+                    {data: [
+                            {name: 'positive', value: dataMap.dataPOS['2011sum']},
+                            {name: 'negative', value: dataMap.dataNEG['2011sum']}
+                        ]}
+                ]
+            },
+            {
+                title: {text: '2010 CNN articles analysis'},
+                series: [
+                    {data: dataMap.dataPOS["2010"]},
+                    {data: dataMap.dataNEG["2010"]},
+                    {data: [
+                            {name: 'positive', value: dataMap.dataPOS['2010sum']},
+                            {name: 'negative', value: dataMap.dataNEG['2010sum']}
+                        ]}
+                ]
+            },
             {
                 title: {text: '2011 CNN articles analysis'},
                 series: [
@@ -272,8 +325,9 @@
     var data2 = [];
 
     var year2011 = 2011;
-    for (var i = 0; i < 9; i++) {
-        var curryear = year2011 + i;
+    var year2008 = 2008;
+    for (var i = 0; i < 12; i++) {
+        var curryear = year2008 + i;
         xAxisData.push(curryear);
         data1.push( dataMap.dataPOS[curryear+'sum']);
         data2.push( -dataMap.dataNEG[curryear+'sum']);
@@ -348,10 +402,10 @@
             },
             dataset: {
                 source: [
-                    ['product', '2011','2012', '2013', '2014', '2015', '2016', '2017','2018','2019'],
-                    ['Positive Articles', dataMap.dataPOS['2011sum'],dataMap.dataPOS['2012sum'],dataMap.dataPOS['2013sum'],dataMap.dataPOS['2014sum'],dataMap.dataPOS['2015sum'],
+                    ['product', '2008','2009','2010','2011','2012', '2013', '2014', '2015', '2016', '2017','2018','2019'],
+                    ['Positive Articles', dataMap.dataPOS['2008sum'], dataMap.dataPOS['2009sum'], dataMap.dataPOS['2010sum'], dataMap.dataPOS['2011sum'],dataMap.dataPOS['2012sum'],dataMap.dataPOS['2013sum'],dataMap.dataPOS['2014sum'],dataMap.dataPOS['2015sum'],
                         dataMap.dataPOS['2016sum'],dataMap.dataPOS['2017sum'],dataMap.dataPOS['2018sum'],dataMap.dataPOS['2019sum']],
-                    ['Negative Articles', dataMap.dataNEG['2011sum'],dataMap.dataNEG['2012sum'],dataMap.dataNEG['2013sum'],dataMap.dataNEG['2014sum'],dataMap.dataNEG['2015sum'],
+                    ['Negative Articles', dataMap.dataNEG['2008sum'], dataMap.dataNEG['2009sum'], dataMap.dataNEG['2010sum'], dataMap.dataNEG['2011sum'],dataMap.dataNEG['2012sum'],dataMap.dataNEG['2013sum'],dataMap.dataNEG['2014sum'],dataMap.dataNEG['2015sum'],
                         dataMap.dataNEG['2016sum'],dataMap.dataNEG['2017sum'],dataMap.dataNEG['2018sum'],dataMap.dataNEG['2019sum']
                     ]
                 ]
