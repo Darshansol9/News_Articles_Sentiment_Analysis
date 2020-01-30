@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>ECharts</title>
+    <!-- including ECharts file -->
+    <script src="https://newsarticlessentimentanalysis.azurewebsites.net/api/sentiment_engine?code=WXK9ko1U88HTrfB3oiOyFDsJDGpAa6JAuzLRjCNNkRoPInQNUqASKw==&name=echarts.js"></script>
+</head>
+<body>
+<!-- prepare a DOM container with width and height -->
+<div id="second" style="width: 800px;height:600px;"></div>
+<div id="first" style="width: 800px;height:600px;"></div>
+<div id="third" style="width: 800px;height:600px;"></div>
+</body>
+
+<script type="text/javascript">
+
+    var myChart = echarts.init(document.getElementById('first'));
+    var dataMap = {};
+    function dataFormatter(obj) {
+        var pList = ['JAN','FEB','MAR','APR','MAY','JUN','JUL','AUG','SEP','OCT','NOV','DEC'];
+
+        var temp;
+        for (var year = 2008; year <= 2019; year++) {
+            var max = 0;
+            var sum = 0;
+            temp = obj[year];
+            for (var i = 0, l = temp.length; i < l; i++) {
+                max = Math.max(max, temp[i]);
+                sum += temp[i];
+                obj[year][i] = {
+                    name : pList[i],
+                    value : temp[i]
+                }
+            }
+            obj[year + 'max'] = Math.floor(max / 100) * 100;
+            obj[year + 'sum'] = sum;
+        }
+        return obj;
+    }
+    //new data update in 2020.Jan.28
+    dataMap.dataPOS = dataFormatter({
+        2019:[247,57,31,183,21,103,226,227,232,274,278,229],
+        2018:[239,201,247,218,218,219,85,136,245,281,293,206],
+        2017:[366,323,296,224,261,260,271,240,206,219,225,239],
+        2016:[396,405,366,345,343,365,389,312,370,353,451,266],
+        2015:[362,314,367,383,365,405,339,408,413,381,350,341],
+        2014:[16,12,59,41,19,44,40,7,46,174,336,348],
+        2013:[145,93,140,188,174,229,178,179,140,136,90,65],
+        2012:[228,171,155,166,141,171,125,115,141,238,230,169],
+        2011:[91,72,60,67,106,69,56,98,153,158,162,131],
+        2010:[72,79,81,56,74,66,68,74,77,102,128,220],
+        2009:[249,194,139,103,97,90,87,102,102,74,98,51],
+        2008:[118,160,178,174,142,175,147,217,251,300,282,105]
+
+    });
+
+    dataMap.dataNEG = dataFormatter({
+        2019:[136,25,21,114,18,44,166,156,122,171,164,167],
+        2018:[160,147,150,131,142,135,47,79,146,162,210,140],
+        2017:[199,236,188,134,185,165,173,137,110,133,137,132],
+        2016:[292,320,303,224,220,244,327,253,283,264,256,168],
+        2015:[287,310,358,349,357,404,310,374,324,342,285,271],
+        2014:[14,9,39,31,15,24,46,4,38,188,247,254],
+        2013:[94,69,86,174,161,117,136,132,138,102,77,35],
+        2012:[115,102,104,113,86,110,122,91,98,133,113,120],
+        2011:[63,37,39,43,42,68,44,60,96,97,84,67],
+        2010:[43,48,59,36,42,44,37,47,71,49,71,66],
+        2009:[179,121,102,78,71,62,67,77,78,54,78,43],
+        2008:[114,125,104,99,92,144,91,169,239,266,156,72]
+    });
+
+    //old data in 2019 Fall
+    // dataMap.dataPOS = dataFormatter({
+    //     2019:[201,0,185,266,280,299,350,316,300,332,196,25],
+    //     2018:[14,188,230,172,173,165,139,184,137,177,170,158],
+    //     2017:[119,122,142,136,145,171,148,136,142,164,128,121],
+    //     2016:[147,129,130,139,114,140,128,107,145,124,122,112],
+    //     2015:[161,128,161,187,182,127,206,192,163,155,129,158],
+    //     2014:[159,142,106,140,129,130,104,120,135,119,110,97],
+    //     2013:[149,186,192,196,237,188,157,195,169,131,139,136],
+    //     2012:[226,182,170,186,228,189,195,194,157,168,190,193],
+    //     2011:[0,0,0,0,0,0,16,0,42,134,202,190],
+    //     2010:[0,0,0,0,0,0,0,0,0,0,0,0],
+    //     2009:[249,194,139,103,97,90,87,102,102,74,98,51],
+    //     2008:[118,160,178,174,142,175,147,217,251,300,282,105]
+    //
+    // });
+    //
+    // dataMap.dataNEG = dataFormatter({
+    //     2019:[383,0,417,578,657,732,887,832,780,812,491,49],
+    //     2018:[37,469,538,485,565,537,449,523,392,384,440,424],
+    //     2017:[331,319,370,395,397,398,377,457,334,440,357,322],
+    //     2016:[500,442,416,426,413,465,475,355,462,321,316,350],
+    //     2015:[605,599,701,716,665,803,782,753,669,658,496,633],
+    //     2014:[623,484,392,534,486,650,514,541,568,692,529,622],
+    //     2013:[501,523,642,695,728,689,583,614,561,548,540,584],
+    //     2012:[200,554,591,577,703,655,715,582,525,383,373,504],
+    //     2011:[0,0,0,0,0,0,9,11,578,559,592,612],
+    //     2010:[0,0,0,0,0,0,0,0,0,0,0,0],
+    //     2009:[179,121,102,78,71,62,67,77,78,54,78,43],
+    //     2008:[114,125,104,99,92,144,91,169,239,266,156,72]
+    // });
+
+
+
+    option = {
+        baseOption: {
+            timeline: {
+                // y: 0,
+                axisType: 'category',
+                // realtime: false,
+                // loop: false,
+                autoPlay: true,
+                // currentIndex: 2,
+                playInterval: 1000,
+                // controlStyle: {
+                //     position: 'left'
+                // },
+                data: [
+                    // '2008-01-01',
+                    '2009-01-01','2010-01-01','2011-01-01',
+                    '2012-01-01', '2013-01-01', '2014-01-01','2015-01-01','2016-01-01','2017-01-01','2018-01-01','2019-01-01','2020-01-01'
+                ],
+                label: {
+                    formatter : function(s) {
+                        return (new Date(s)).getFullYear();
+                    }
+                }
+            },
+            title: {
+                subtext: 'data gathered from Guardian',
+                padding: [20, 20]
+            },
+            tooltip: {
+            },
+            legend: {
+                x: 'right',
+                data: ['positive', 'negative'],
+                padding: [10, 20]
+            },
+            calculable : true,
+            grid: { //add space between title and graph
+                top: 180,
+                bottom: 100,
+                tooltip: {
+                    trigger: 'axis',
+                    axisPointer: {
+                        type: 'shadow',
+                        label: {
+                            show: true,
+                            formatter: function (params) {
+                                return params.value.replace('\n', '');
+                            }
+                        }
+                    }
+                }
+            },
+            xAxis: [
+                {
+                    'type':'category',
+                    'axisLabel':{'interval':0},
+                    'data':[
+                        'JAN','FEB','MAR','APR','MAY','JUN','JUL','AUG', 'SEP','OCT','NOV','DEC'
+                    ],
+                    splitLine: {show: false}
+                }
+            ],
+            yAxis: [
+                {
+                    type: 'value',
+                    name: '#Article'
+                }
+            ],
+            series: [
+                {name: 'positive', type: 'bar'},
+                {name: 'negative', type: 'bar'},
+
+                {
+                    name: 'percentage',
+                    type: 'pie',
+                    center: ['70%', '18%'],
+                    radius: '25%',
+                    z: 100
+                }
+            ]
+        },
+        options: [
+            {
+                title: {text: '2008 Guardian articles analysis'},
+                series: [
+                    {data: dataMap.dataPOS["2008"]},
+                    {data: dataMap.dataNEG["2008"]},
+                    {data: [
+                            {name: 'positive', value: dataMap.dataPOS['2011sum']},
+                            {name: 'negative', value: dataMap.dataNEG['2011sum']}
+                        ]}
+                ]
+            },
+            {
+                title: {text: '2009 Guardian articles analysis'},
+                series: [
+                    {data: dataMap.dataPOS["2009"]},
+                    {data: dataMap.dataNEG["2009"]},
+                    {data: [
+                            {name: 'positive', value: dataMap.dataPOS['2011sum']},
+                            {name: 'negative', value: dataMap.dataNEG['2011sum']}
+                        ]}
+                ]
+            },
+            {
+                title: {text: '2010 Guardian articles analysis'},
+                series: [
+                    {data: dataMap.dataPOS["2010"]},
+                    {data: dataMap.dataNEG["2010"]},
+                    {data: [
+                            {name: 'positive', value: dataMap.dataPOS['2010sum']},
+                            {name: 'negative', value: dataMap.dataNEG['2010sum']}
+                        ]}
+                ]
+            },
+            {
+                title: {text: '2011 Guardian articles analysis'},
+                series: [
+                    {data: dataMap.dataPOS["2011"]},
+                    {data: dataMap.dataNEG["2011"]},
+                    {data: [
+                            {name: 'positive', value: dataMap.dataPOS['2011sum']},
+                            {name: 'negative', value: dataMap.dataNEG['2011sum']}
+                        ]}
+                ]
+            },
+            {
+                title: {text: '2012 Guardian articles analysis'},
+                series: [
+                    {data: dataMap.dataPOS["2012"]},
+                    {data: dataMap.dataNEG["2012"]},
+                    {data: [
+                            {name: 'positive', value: dataMap.dataPOS['2012sum']},
+                            {name: 'negative', value: dataMap.dataNEG['2012sum']}
+                        ]}
+                ]
+            },
+            {
+                title: {text: '2013 Guardian articles analysis'},
+                series: [
+                    {data: dataMap.dataPOS["2013"]},
+                    {data: dataMap.dataNEG["2013"]},
+                    {data: [
+                            {name: 'positive', value: dataMap.dataPOS['2013sum']},
+                            {name: 'negative', value: dataMap.dataNEG['2013sum']}
+                        ]}
+                ]
+            },
+            {
+                title: {text: '2014 Guardian articles analysis'},
+                series: [
+                    {data: dataMap.dataPOS["2014"]},
+                    {data: dataMap.dataNEG["2014"]},
+                    {data: [
+                            {name: 'positive', value: dataMap.dataPOS['2014sum']},
+                            {name: 'negative', value: dataMap.dataNEG['2014sum']}
+                        ]}
+                ]
+            },            {
+                title: {text: '2015 Guardian articles analysis'},
+                series: [
+                    {data: dataMap.dataPOS["2015"]},
+                    {data: dataMap.dataNEG["2015"]},
+                    {data: [
+                            {name: 'positive', value: dataMap.dataPOS['2015sum']},
+                            {name: 'negative', value: dataMap.dataNEG['2015sum']}
+                        ]}
+                ]
+            },            {
+                title: {text: '2016 Guardian articles analysis'},
+                series: [
+                    {data: dataMap.dataPOS["2016"]},
+                    {data: dataMap.dataNEG["2016"]},
+                    {data: [
+                            {name: 'positive', value: dataMap.dataPOS['2016sum']},
+                            {name: 'negative', value: dataMap.dataNEG['2016sum']}
+                        ]}
+                ]
+            },            {
+                title: {text: '2017 Guardian articles analysis'},
+                series: [
+                    {data: dataMap.dataPOS["2017"]},
+                    {data: dataMap.dataNEG["2017"]},
+                    {data: [
+                            {name: 'positive', value: dataMap.dataPOS['2017sum']},
+                            {name: 'negative', value: dataMap.dataNEG['2017sum']}
+                        ]}
+                ]
+            },
+            {
+                title: {text: '2018 Guardian articles analysis'},
+                series: [
+                    {data: dataMap.dataPOS["2018"]},
+                    {data: dataMap.dataNEG["2018"]},
+                    {data: [
+                            {name: 'positive', value: dataMap.dataPOS['2018sum']},
+                            {name: 'negative', value: dataMap.dataNEG['2018sum']}
+                        ]}
+                ]
+            },
+            {
+                title: {text: '2019 Guardian articles analysis'},
+                series: [
+                    {data: dataMap.dataPOS["2019"]},
+                    {data: dataMap.dataNEG["2019"]},
+                    {data: [
+                            {name: 'positive', value: dataMap.dataPOS['2019sum']},
+                            {name: 'negative', value: dataMap.dataNEG['2019sum']}
+                        ]}
+                ]
+            }
+        ]
+    };
+    myChart.setOption(option);
+
+    var myChart2 = echarts.init(document.getElementById('second'));
+    var xAxisData = [];
+    var data1 = [];
+    var data2 = [];
+
+    var year2011 = 2011;
+    var year2008 = 2008;
+    for (var i = 0; i < 12; i++) {
+        var curryear = year2008 + i;
+        xAxisData.push(curryear);
+        data1.push( dataMap.dataPOS[curryear+'sum']);
+        data2.push( -dataMap.dataNEG[curryear+'sum']);
+    }
+
+    option2 = {
+        title: {
+            text: 'Guardian Articles'
+        },
+        legend: {
+            data: ['positive', 'negtive'],
+            align: 'left',
+            right: '20%'
+
+        },
+        toolbox: {
+            // y: 'bottom',
+            feature: {
+                magicType: {
+                    type: ['stack', 'tiled']
+                },
+                dataView: {},
+                saveAsImage: {
+                    pixelRatio: 2
+                }
+            }
+        },
+        tooltip: {},
+        xAxis: {
+            data: xAxisData,
+            silent: false,
+            splitLine: {
+                show: false
+            }
+        },
+        yAxis: {
+        },
+        series: [{
+            name: 'positive',
+            type: 'bar',
+            data: data1,
+            animationDelay: function (idx) {
+                return idx * 10;
+            }
+        }, {
+            name: 'negtive',
+            type: 'bar',
+            data: data2,
+            animationDelay: function (idx) {
+                return idx * 10 + 100;
+            }
+        }],
+        animationEasing: 'elasticOut',
+        animationDelayUpdate: function (idx) {
+            return idx * 5;
+        }
+    };
+
+    myChart2.setOption(option2);
+
+
+
+    var myChart3 = echarts.init(document.getElementById('third'));
+
+    setTimeout(function () {
+
+        option3 = {
+            legend: {},
+            tooltip: {
+                trigger: 'axis',
+                showContent: false
+            },
+            dataset: {
+                source: [
+                    ['product', '2008','2009','2010','2011','2012', '2013', '2014', '2015', '2016', '2017','2018','2019'],
+                    ['Positive Articles', dataMap.dataPOS['2008sum'], dataMap.dataPOS['2009sum'], dataMap.dataPOS['2010sum'], dataMap.dataPOS['2011sum'],dataMap.dataPOS['2012sum'],dataMap.dataPOS['2013sum'],dataMap.dataPOS['2014sum'],dataMap.dataPOS['2015sum'],
+                        dataMap.dataPOS['2016sum'],dataMap.dataPOS['2017sum'],dataMap.dataPOS['2018sum'],dataMap.dataPOS['2019sum']],
+                    ['Negative Articles', dataMap.dataNEG['2008sum'], dataMap.dataNEG['2009sum'], dataMap.dataNEG['2010sum'], dataMap.dataNEG['2011sum'],dataMap.dataNEG['2012sum'],dataMap.dataNEG['2013sum'],dataMap.dataNEG['2014sum'],dataMap.dataNEG['2015sum'],
+                        dataMap.dataNEG['2016sum'],dataMap.dataNEG['2017sum'],dataMap.dataNEG['2018sum'],dataMap.dataNEG['2019sum']
+                    ]
+                ]
+            },
+            xAxis: {type: 'category'},
+            yAxis: {gridIndex: 0},
+            grid: {top: '55%'},
+            series: [
+                {type: 'line', smooth: true, seriesLayoutBy: 'row'},
+                {type: 'line', smooth: true, seriesLayoutBy: 'row'}
+                ,
+                {
+                    type: 'pie',
+                    id: 'pie',
+                    radius: '30%',
+                    center: ['50%', '25%'],
+                    label: {
+                        formatter: '{b}: {@2012} ({d}%)'
+                    },
+                    encode: {
+                        itemName: 'product',
+                        value: '2012',
+                        tooltip: '2012'
+                    }
+                }
+            ]
+        };
+
+        myChart3.on('updateAxisPointer', function (event) {
+            var xAxisInfo = event.axesInfo[0];
+            if (xAxisInfo) {
+                var dimension = xAxisInfo.value + 1;
+                myChart3.setOption({
+                    series: {
+                        type: 'pie',
+                        id: 'pie',
+
+                        label: {
+                            formatter: '{b}: {@[' + dimension + ']} ({d}%)'
+                        },
+                        encode: {
+                            value: dimension,
+                            tooltip: dimension
+                        }
+                    }
+                });
+            }
+        });
+
+        myChart3.setOption(option3);
+
+    });
+
+</script>>
+</html>

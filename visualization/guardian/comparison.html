@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>ECharts</title>
+    <!-- including ECharts file -->
+    <script src="https://newsarticlessentimentanalysis.azurewebsites.net/api/sentiment_engine?code=WXK9ko1U88HTrfB3oiOyFDsJDGpAa6JAuzLRjCNNkRoPInQNUqASKw==&name=echarts.js"></script>
+</head>
+<body>
+<!-- prepare a DOM container with width and height -->
+<div id="main" style="width: 800px;height:600px;"></div>
+</body>
+<script type="text/javascript">
+
+    var myChart = echarts.init(document.getElementById('main'));
+
+    var dataMap = {};
+    function dataFormatter(obj) {
+        var pList = ['JAN','FEB','MAR','APR','MAY','JUN','JUL','AUG','SEP','OCT','NOV','DEC'];
+
+        var temp;
+        for (var year = 2008; year <= 2019; year++) {
+            var max = 0;
+            var sum = 0;
+            temp = obj[year];
+            for (var i = 0, l = temp.length; i < l; i++) {
+                max = Math.max(max, temp[i]);
+                sum += temp[i];
+                obj[year][i] = {
+                    name : pList[i],
+                    value : temp[i]
+                }
+            }
+            obj[year + 'max'] = Math.floor(max / 100) * 100;
+            obj[year + 'sum'] = sum;
+        }
+        return obj;
+    }
+
+    dataMap.dataPOS = dataFormatter({
+        2019:[247,57,31,183,21,103,226,227,232,274,278,229],
+        2018:[239,201,247,218,218,219,85,136,245,281,293,206],
+        2017:[366,323,296,224,261,260,271,240,206,219,225,239],
+        2016:[396,405,366,345,343,365,389,312,370,353,451,266],
+        2015:[362,314,367,383,365,405,339,408,413,381,350,341],
+        2014:[16,12,59,41,19,44,40,7,46,174,336,348],
+        2013:[145,93,140,188,174,229,178,179,140,136,90,65],
+        2012:[228,171,155,166,141,171,125,115,141,238,230,169],
+        2011:[91,72,60,67,106,69,56,98,153,158,162,131],
+        2010:[72,79,81,56,74,66,68,74,77,102,128,220],
+        2009:[249,194,139,103,97,90,87,102,102,74,98,51],
+        2008:[118,160,178,174,142,175,147,217,251,300,282,105]
+
+    });
+
+    dataMap.dataNEG = dataFormatter({
+        2019:[136,25,21,114,18,44,166,156,122,171,164,167],
+        2018:[160,147,150,131,142,135,47,79,146,162,210,140],
+        2017:[199,236,188,134,185,165,173,137,110,133,137,132],
+        2016:[292,320,303,224,220,244,327,253,283,264,256,168],
+        2015:[287,310,358,349,357,404,310,374,324,342,285,271],
+        2014:[14,9,39,31,15,24,46,4,38,188,247,254],
+        2013:[94,69,86,174,161,117,136,132,138,102,77,35],
+        2012:[115,102,104,113,86,110,122,91,98,133,113,120],
+        2011:[63,37,39,43,42,68,44,60,96,97,84,67],
+        2010:[43,48,59,36,42,44,37,47,71,49,71,66],
+        2009:[179,121,102,78,71,62,67,77,78,54,78,43],
+        2008:[114,125,104,99,92,144,91,169,239,266,156,72]
+    });
+
+
+    setTimeout(function () {
+
+        option = {
+            legend: {},
+            tooltip: {
+                trigger: 'axis',
+                showContent: false
+            },
+            dataset: {
+                source: [
+                    ['product', '2008','2009','2010','2011','2012', '2013', '2014', '2015', '2016', '2017','2018','2019'],
+                    ['Positive Articles', dataMap.dataPOS['2008sum'], dataMap.dataPOS['2009sum'], dataMap.dataPOS['2010sum'], dataMap.dataPOS['2011sum'],dataMap.dataPOS['2012sum'],dataMap.dataPOS['2013sum'],dataMap.dataPOS['2014sum'],dataMap.dataPOS['2015sum'],
+                        dataMap.dataPOS['2016sum'],dataMap.dataPOS['2017sum'],dataMap.dataPOS['2018sum'],dataMap.dataPOS['2019sum']],
+                    ['Negative Articles', dataMap.dataNEG['2008sum'], dataMap.dataNEG['2009sum'], dataMap.dataNEG['2010sum'], dataMap.dataNEG['2011sum'],dataMap.dataNEG['2012sum'],dataMap.dataNEG['2013sum'],dataMap.dataNEG['2014sum'],dataMap.dataNEG['2015sum'],
+                        dataMap.dataNEG['2016sum'],dataMap.dataNEG['2017sum'],dataMap.dataNEG['2018sum'],dataMap.dataNEG['2019sum']
+                    ]
+                ]
+            },
+            xAxis: {type: 'category'},
+            yAxis: {gridIndex: 0},
+            grid: {top: '55%'},
+            series: [
+                {type: 'line', smooth: true, seriesLayoutBy: 'row'},
+
+                {type: 'line', smooth: true, seriesLayoutBy: 'row'},
+                {
+                    type: 'pie',
+                    id: 'pie',
+                    radius: '30%',
+                    center: ['50%', '25%']
+                    ,
+                    label: {
+                        formatter: '{b}: {@2012} ({d}%)'
+                    },
+                    encode: {
+                        itemName: 'product',
+                        value: '2012',
+                        tooltip: '2012'
+                    }
+                }
+            ]
+        };
+
+        myChart.on('updateAxisPointer', function (event) {
+            var xAxisInfo = event.axesInfo[0];
+            if (xAxisInfo) {
+                var dimension = xAxisInfo.value + 1;
+                myChart.setOption({
+                    series: {
+                        id: 'pie',
+                        label: {
+                            formatter: '{b}: {@[' + dimension + ']} ({d}%)'
+                        },
+                        encode: {
+                            value: dimension,
+                            tooltip: dimension
+                        }
+                    }
+                });
+            }
+        });
+
+        myChart.setOption(option);
+
+    });
+    </script>
+</html>
+

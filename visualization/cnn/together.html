@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>ECharts</title>
+    <!-- including ECharts file -->
+    <script src="https://newsarticlessentimentanalysis.azurewebsites.net/api/sentiment_engine?code=WXK9ko1U88HTrfB3oiOyFDsJDGpAa6JAuzLRjCNNkRoPInQNUqASKw==&name=echarts.js"></script>
+</head>
+<body>
+<!-- prepare a DOM container with width and height -->
+<div id="second" style="width: 800px;height:600px;"></div>
+<div id="first" style="width: 800px;height:600px;"></div>
+<div id="third" style="width: 800px;height:600px;"></div>
+</body>
+
+<script type="text/javascript">
+    // 2011:[1,2,3,4,5,6,16,0,42,134,202,190]
+    // 2011:[1,2,3,4,5,6,9,11,578,559,592,612]
+    // 2012:[226,182,170,186,228,189,195,194,157,168,190,193]
+    // 2012:[200,554,591,577,703,655,715,582,525,383,373,504]
+    // 2013:[149,186,192,196,237,188,157,195,169,131,139,136]
+    // 2013:[501,523,642,695,728,689,583,614,561,548,540,584]
+    // 2014:[159,142,106,140,129,130,104,120,135,119,110,97]
+    // 2014:[623,484,392,534,486,650,514,541,568,692,529,622]
+    // 2015:[161,128,161,187,182,127,206,192,163,155,129,158]
+    // 2015:[605,599,701,716,665,803,782,753,669,658,496,633]
+    // 2016:[147,129,130,139,114,140,128,107,145,124,122,112]
+    // 2016:[500,442,416,426,413,465,475,355,462,321,316,350]
+    // 2017:[119,122,142,136,145,171,148,136,142,164,128,121]
+    // 2017:[331,319,370,395,397,398,377,457,334,440,357,322]
+    // 2018:[14,188,230,172,173,165,139,184,137,177,170,158]
+    // 2018:[37,469,538,485,565,537,449,523,392,384,440,424]
+    // 2019:[201,0,185,266,280,299,350,316,300,332,196,25]
+    // 2019:[383,0,417,578,657,732,887,832,780,812,491,49]
+
+    var myChart = echarts.init(document.getElementById('first'));
+    var dataMap = {};
+    function dataFormatter(obj) {
+        var pList = ['JAN','FEB','MAR','APR','MAY','JUN','JUL','AUG','SEP','OCT','NOV','DEC'];
+
+        var temp;
+        for (var year = 2011; year <= 2019; year++) {
+            var max = 0;
+            var sum = 0;
+            temp = obj[year];
+            for (var i = 0, l = temp.length; i < l; i++) {
+                max = Math.max(max, temp[i]);
+                sum += temp[i];
+                obj[year][i] = {
+                    name : pList[i],
+                    value : temp[i]
+                }
+            }
+            obj[year + 'max'] = Math.floor(max / 100) * 100;
+            obj[year + 'sum'] = sum;
+        }
+        return obj;
+    }
+
+    dataMap.dataPOS = dataFormatter({
+        2019:[201,0,185,266,280,299,350,316,300,332,196,25],
+        2018:[14,188,230,172,173,165,139,184,137,177,170,158],
+        2017:[119,122,142,136,145,171,148,136,142,164,128,121],
+        2016:[147,129,130,139,114,140,128,107,145,124,122,112],
+        2015:[161,128,161,187,182,127,206,192,163,155,129,158],
+        2014:[159,142,106,140,129,130,104,120,135,119,110,97],
+        2013:[149,186,192,196,237,188,157,195,169,131,139,136],
+        2012:[226,182,170,186,228,189,195,194,157,168,190,193],
+        2011:[1,2,3,4,5,6,16,0,42,134,202,190]
+    });
+
+    dataMap.dataNEG = dataFormatter({
+        2019:[383,0,417,578,657,732,887,832,780,812,491,49],
+        2018:[37,469,538,485,565,537,449,523,392,384,440,424],
+        2017:[331,319,370,395,397,398,377,457,334,440,357,322],
+        2016:[500,442,416,426,413,465,475,355,462,321,316,350],
+        2015:[605,599,701,716,665,803,782,753,669,658,496,633],
+        2014:[623,484,392,534,486,650,514,541,568,692,529,622],
+        2013:[501,523,642,695,728,689,583,614,561,548,540,584],
+        2012:[200,554,591,577,703,655,715,582,525,383,373,504],
+        2011:[1,2,3,4,5,6,9,11,578,559,592,612]
+    });
+
+
+
+    option = {
+        baseOption: {
+            timeline: {
+                // y: 0,
+                axisType: 'category',
+                // realtime: false,
+                // loop: false,
+                autoPlay: true,
+                // currentIndex: 2,
+                playInterval: 1000,
+                // controlStyle: {
+                //     position: 'left'
+                // },
+                data: [
+                    // '2011-01-01',
+                    '2012-01-01',
+                    '2013-01-01', '2014-01-01','2015-01-01','2016-01-01','2017-01-01','2018-01-01','2019-01-01','2020-01-01'
+                ],
+                label: {
+                    formatter : function(s) {
+                        return (new Date(s)).getFullYear();
+                    }
+                }
+            },
+            title: {
+                subtext: 'data gathered from CNN',
+                padding: [20, 20]
+            },
+            tooltip: {
+            },
+            legend: {
+                x: 'right',
+                data: ['positive', 'negative'],
+                padding: [10, 20]
+            },
+            calculable : true,
+            grid: { //add space between title and graph
+                top: 180,
+                bottom: 100,
+                tooltip: {
+                    trigger: 'axis',
+                    axisPointer: {
+                        type: 'shadow',
+                        label: {
+                            show: true,
+                            formatter: function (params) {
+                                return params.value.replace('\n', '');
+                            }
+                        }
+                    }
+                }
+            },
+            xAxis: [
+                {
+                    'type':'category',
+                    'axisLabel':{'interval':0},
+                    'data':[
+                        'JAN','FEB','MAR','APR','MAY','JUN','JUL','AUG', 'SEP','OCT','NOV','DEC'
+                    ],
+                    splitLine: {show: false}
+                }
+            ],
+            yAxis: [
+                {
+                    type: 'value',
+                    name: '#Article'
+                }
+            ],
+            series: [
+                {name: 'positive', type: 'bar'},
+                {name: 'negative', type: 'bar'},
+
+                {
+                    name: 'percentage',
+                    type: 'pie',
+                    center: ['70%', '18%'],
+                    radius: '25%',
+                    z: 100
+                }
+            ]
+        },
+        options: [
+
+            {
+                title: {text: '2011 CNN articles analysis'},
+                series: [
+                    {data: dataMap.dataPOS["2011"]},
+                    {data: dataMap.dataNEG["2011"]},
+                    {data: [
+                            {name: 'positive', value: dataMap.dataPOS['2011sum']},
+                            {name: 'negative', value: dataMap.dataNEG['2011sum']}
+                        ]}
+                ]
+            },
+            {
+                title: {text: '2012 CNN articles analysis'},
+                series: [
+                    {data: dataMap.dataPOS["2012"]},
+                    {data: dataMap.dataNEG["2012"]},
+                    {data: [
+                            {name: 'positive', value: dataMap.dataPOS['2012sum']},
+                            {name: 'negative', value: dataMap.dataNEG['2012sum']}
+                        ]}
+                ]
+            },
+            {
+                title: {text: '2013 CNN articles analysis'},
+                series: [
+                    {data: dataMap.dataPOS["2013"]},
+                    {data: dataMap.dataNEG["2013"]},
+                    {data: [
+                            {name: 'positive', value: dataMap.dataPOS['2013sum']},
+                            {name: 'negative', value: dataMap.dataNEG['2013sum']}
+                        ]}
+                ]
+            },
+            {
+                title: {text: '2014 CNN articles analysis'},
+                series: [
+                    {data: dataMap.dataPOS["2014"]},
+                    {data: dataMap.dataNEG["2014"]},
+                    {data: [
+                            {name: 'positive', value: dataMap.dataPOS['2014sum']},
+                            {name: 'negative', value: dataMap.dataNEG['2014sum']}
+                        ]}
+                ]
+            },            {
+                title: {text: '2015 CNN articles analysis'},
+                series: [
+                    {data: dataMap.dataPOS["2015"]},
+                    {data: dataMap.dataNEG["2015"]},
+                    {data: [
+                            {name: 'positive', value: dataMap.dataPOS['2015sum']},
+                            {name: 'negative', value: dataMap.dataNEG['2015sum']}
+                        ]}
+                ]
+            },            {
+                title: {text: '2016 CNN articles analysis'},
+                series: [
+                    {data: dataMap.dataPOS["2016"]},
+                    {data: dataMap.dataNEG["2016"]},
+                    {data: [
+                            {name: 'positive', value: dataMap.dataPOS['2016sum']},
+                            {name: 'negative', value: dataMap.dataNEG['2016sum']}
+                        ]}
+                ]
+            },            {
+                title: {text: '2017 CNN articles analysis'},
+                series: [
+                    {data: dataMap.dataPOS["2017"]},
+                    {data: dataMap.dataNEG["2017"]},
+                    {data: [
+                            {name: 'positive', value: dataMap.dataPOS['2017sum']},
+                            {name: 'negative', value: dataMap.dataNEG['2017sum']}
+                        ]}
+                ]
+            },
+            {
+                title: {text: '2018 CNN articles analysis'},
+                series: [
+                    {data: dataMap.dataPOS["2018"]},
+                    {data: dataMap.dataNEG["2018"]},
+                    {data: [
+                            {name: 'positive', value: dataMap.dataPOS['2018sum']},
+                            {name: 'negative', value: dataMap.dataNEG['2018sum']}
+                        ]}
+                ]
+            },
+            {
+                title: {text: '2019 CNN articles analysis'},
+                series: [
+                    {data: dataMap.dataPOS["2019"]},
+                    {data: dataMap.dataNEG["2019"]},
+                    {data: [
+                            {name: 'positive', value: dataMap.dataPOS['2019sum']},
+                            {name: 'negative', value: dataMap.dataNEG['2019sum']}
+                        ]}
+                ]
+            }
+        ]
+    };
+    myChart.setOption(option);
+
+    var myChart2 = echarts.init(document.getElementById('second'));
+    var xAxisData = [];
+    var data1 = [];
+    var data2 = [];
+
+    var year2011 = 2011;
+    for (var i = 0; i < 9; i++) {
+        var curryear = year2011 + i;
+        xAxisData.push(curryear);
+        data1.push( dataMap.dataPOS[curryear+'sum']);
+        data2.push( -dataMap.dataNEG[curryear+'sum']);
+    }
+
+    option2 = {
+        title: {
+            text: 'CNN articles'
+        },
+        legend: {
+            data: ['positive', 'negtive'],
+            align: 'left',
+            right: '20%'
+
+        },
+        toolbox: {
+            // y: 'bottom',
+            feature: {
+                magicType: {
+                    type: ['stack', 'tiled']
+                },
+                dataView: {},
+                saveAsImage: {
+                    pixelRatio: 2
+                }
+            }
+        },
+        tooltip: {},
+        xAxis: {
+            data: xAxisData,
+            silent: false,
+            splitLine: {
+                show: false
+            }
+        },
+        yAxis: {
+        },
+        series: [{
+            name: 'positive',
+            type: 'bar',
+            data: data1,
+            animationDelay: function (idx) {
+                return idx * 10;
+            }
+        }, {
+            name: 'negtive',
+            type: 'bar',
+            data: data2,
+            animationDelay: function (idx) {
+                return idx * 10 + 100;
+            }
+        }],
+        animationEasing: 'elasticOut',
+        animationDelayUpdate: function (idx) {
+            return idx * 5;
+        }
+    };
+
+    myChart2.setOption(option2);
+
+
+
+    var myChart3 = echarts.init(document.getElementById('third'));
+
+    setTimeout(function () {
+
+        option3 = {
+            legend: {},
+            tooltip: {
+                trigger: 'axis',
+                showContent: false
+            },
+            dataset: {
+                source: [
+                    ['product', '2011','2012', '2013', '2014', '2015', '2016', '2017','2018','2019'],
+                    ['Positive Articles', dataMap.dataPOS['2011sum'],dataMap.dataPOS['2012sum'],dataMap.dataPOS['2013sum'],dataMap.dataPOS['2014sum'],dataMap.dataPOS['2015sum'],
+                        dataMap.dataPOS['2016sum'],dataMap.dataPOS['2017sum'],dataMap.dataPOS['2018sum'],dataMap.dataPOS['2019sum']],
+                    ['Negative Articles', dataMap.dataNEG['2011sum'],dataMap.dataNEG['2012sum'],dataMap.dataNEG['2013sum'],dataMap.dataNEG['2014sum'],dataMap.dataNEG['2015sum'],
+                        dataMap.dataNEG['2016sum'],dataMap.dataNEG['2017sum'],dataMap.dataNEG['2018sum'],dataMap.dataNEG['2019sum']
+                    ]
+                ]
+            },
+            xAxis: {type: 'category'},
+            yAxis: {gridIndex: 0},
+            grid: {top: '55%'},
+            series: [
+                {type: 'line', smooth: true, seriesLayoutBy: 'row'},
+                {type: 'line', smooth: true, seriesLayoutBy: 'row'}
+                ,
+                {
+                    type: 'pie',
+                    id: 'pie',
+                    radius: '30%',
+                    center: ['50%', '25%'],
+                    label: {
+                        formatter: '{b}: {@2012} ({d}%)'
+                    },
+                    encode: {
+                        itemName: 'product',
+                        value: '2012',
+                        tooltip: '2012'
+                    }
+                }
+            ]
+        };
+
+        myChart3.on('updateAxisPointer', function (event) {
+            var xAxisInfo = event.axesInfo[0];
+            if (xAxisInfo) {
+                var dimension = xAxisInfo.value + 1;
+                myChart3.setOption({
+                    series: {
+                        type: 'pie',
+                        id: 'pie',
+
+                        label: {
+                            formatter: '{b}: {@[' + dimension + ']} ({d}%)'
+                        },
+                        encode: {
+                            value: dimension,
+                            tooltip: dimension
+                        }
+                    }
+                });
+            }
+        });
+
+        myChart3.setOption(option3);
+
+    });
+
+</script>>
+</html>
