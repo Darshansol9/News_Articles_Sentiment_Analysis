@@ -1,0 +1,1 @@
+Engineering student Can Cevik was stopped by police at his Florida International University graduation ceremony under suspicion his graduation cap was decorated with an explosive. Police investigated the cap and found the digital device Cevik used as decoration wasn't an explosive, but an Arduino Uno, an open-source microcontroller board, and allowed Cevik to walk with a new cap.
